@@ -70,7 +70,7 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
             # Выполняет pull образа с DockerHub
-            sudo docker pull markpor/infra_actions
+            sudo docker pull ${{ secrets.USER }}/infra_actions:latest
             #остановка всех контейнеров
             sudo docker stop $(sudo docker ps -a -q)
-            sudo docker run --rm -d -p 5050:5000 markpor/infra_actions
+            sudo docker run --rm -d -p 5050:5000 ${{ secrets.USER }}/infra_actions
